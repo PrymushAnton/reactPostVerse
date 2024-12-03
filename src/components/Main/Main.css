@@ -1,0 +1,10 @@
+
+
+main{
+    height: 100vh;
+
+
+    display: grid;
+    grid-template-columns: 13% auto auto auto auto auto 13%;
+    grid-template-rows: 60px auto 60px;
+}
