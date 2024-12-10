@@ -5,15 +5,21 @@ import { PostList } from "../PostList/PostList";
 import firstPfp from "../Post/images/firstPfp.png"
 
 import "./Main.css"
+import { ReactNode } from "react";
 
-export function Main(){
+interface IMainProps {
+    children?: ReactNode
+}
+
+export function Main(props: IMainProps){
     return (
         <main>
-            <Header></Header>
-            <PostList></PostList>
+            {/* <Header></Header> */}
+            {/* <PostList></PostList> */}
+            {props.children}
 
             
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
         </main>
 
     )

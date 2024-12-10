@@ -5,9 +5,9 @@ interface IPostProps{
     profilePicture: any,
     title: string,
     author: string,
-    dateOfUpload: string,
-    answers: number,
-    views: number
+    published_at: string,
+    public_reactions_count: number,
+    comments_count: number
 }
 
 export function Post(props: IPostProps){
@@ -25,20 +25,20 @@ export function Post(props: IPostProps){
                     <div id="lowerMenu">
                         <p id="author">{props.author}</p>
                         <p>•</p>
-                        <p id="date">{props.dateOfUpload}</p>
+                        <p id="date">{props.published_at}</p>
                     </div>
                     
                 </div>
             </div>
 
-            <div id="answersDiv">
-                <h4 id="answers">Answers</h4>
-                <p id="answersCount">{props.answers}</p>
+            <div id="publicReactionsDiv">
+                <h4 id="public_reactions">Public reactions count</h4>
+                <p id="public_reactions_count">{props.public_reactions_count}</p>
             </div>
 
-            <div id="viewsDiv">
-                <h4 id="views">Views</h4>
-                <p id="viewsCount">{props.views}</p>
+            <div id="commentsDiv">
+                <h4 id="comments">Comments</h4>
+                <p id="comments_count">{props.comments_count}</p>
             </div>
         </div>
     )

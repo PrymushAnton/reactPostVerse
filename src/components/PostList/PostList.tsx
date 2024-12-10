@@ -17,7 +17,16 @@ const posts = [
         dateOfUpload:"01.11.2024",
         answers:32,
         views:5123,
-        category: "ReactJS"
+        category: "ReactJS",
+
+
+        comments_count: 124,
+        public_reactions_count: 120,
+        published_at: "01.11.2024",
+        user:{
+            profile_image: firstPfp,
+            name: "SerjRoman",
+        }
     },
     {
         id: 1,
@@ -27,7 +36,16 @@ const posts = [
         dateOfUpload:"25.10.2024",
         answers:47,
         views:6879,
-        category: "ExpressJS"
+        category: "ExpressJS",
+
+
+        comments_count: 124,
+        public_reactions_count: 120,
+        published_at: "01.11.2024",
+        user:{
+            profile_image: secondPfp,
+            name: "RomanSerj",
+        }
     },
     {
         id: 2,
@@ -37,7 +55,17 @@ const posts = [
         dateOfUpload:"12.02.2024",
         answers:132,
         views:14890,
-        category: "Django"
+        category: "Django",
+
+
+
+        comments_count: 124,
+        public_reactions_count: 120,
+        published_at: "01.11.2024",
+        user:{
+            profile_image: thirdPfp,
+            name: "Mykolay",
+        }
     },
     {
         id: 3,
@@ -47,7 +75,16 @@ const posts = [
         dateOfUpload:"17.11.2024",
         answers:14,
         views:3789,
-        category: "Python"
+        category: "Python",
+
+
+        comments_count: 124,
+        public_reactions_count: 120,
+        published_at: "01.11.2024",
+        user:{
+            profile_image: fourthPfp,
+            name: "Kamilla",
+        }
     },
 ]
 
@@ -65,6 +102,15 @@ export function PostList(){
         }
         console.log(selectedCategory)
     }, [selectedCategory])
+
+    useEffect(() => {
+        async function getAllPosts(){
+            const response = await fetch("https://dev.to/api/articles")
+            const posts = await response.json()
+            setFilteredPosts(posts)
+        }
+        getAllPosts()
+    })
 
 
     return (
@@ -85,12 +131,12 @@ export function PostList(){
             {filteredPosts.map((post) => (
                 <Post
                     key={post.id}
-                    profilePicture={post.profilePicture}
+                    profilePicture={post.user.profile_image}
                     title={post.title}
-                    author={post.author}
-                    dateOfUpload={post.dateOfUpload}
-                    answers={post.answers}
-                    views={post.views}
+                    author={post.user.name}
+                    published_at={post.published_at.split('T')[0]}
+                    public_reactions_count={post.public_reactions_count}
+                    comments_count={post.comments_count}
                 ></Post>
             ))}
         </div>

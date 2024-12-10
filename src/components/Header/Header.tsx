@@ -1,16 +1,20 @@
 import logoHeader from "./images/logo.png"
 import "./Header.css"
+import { Link } from "react-router-dom"
 
 export function Header(){
     return (
         <header>
 
             <div id="logoPostsHeader">
-                <a id="logoHeaderLink" href="#">
+                {/* <a id="logoHeaderLink" href="#"></a> */}
+                <Link to='/' id="logoHeaderLink">
                     <img id="logoHeader" src={logoHeader} alt="" />
-                </a>
+                </Link>
+                    
                 
-                <a id="postsHeader" href="#">Posts</a>
+                <Link to="/posts" id="postsHeader">Posts</Link>
+                {/* <a id="postsHeader" href="#">Posts</a> */}
             </div>
 
 
