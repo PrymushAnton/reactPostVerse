@@ -6,6 +6,7 @@ import fourthPfp from "../PostList/images/fourthPfp.png"
 import { Post } from "../Post/Post"
 import "./PostList.css"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 
 const posts = [
@@ -100,7 +101,6 @@ export function PostList(){
                 return post.category === selectedCategory
             }))
         }
-        console.log(selectedCategory)
     }, [selectedCategory])
 
     useEffect(() => {
@@ -110,7 +110,7 @@ export function PostList(){
             setFilteredPosts(posts)
         }
         getAllPosts()
-    })
+    }, [])
 
 
     return (
@@ -128,9 +128,10 @@ export function PostList(){
                     <option value="Python">Python</option>
                 </select>
             </div>
-            {filteredPosts.map((post) => (
+            {filteredPosts.map((post, index) => (
                 <Post
-                    key={post.id}
+                    key={index}
+                    id={post.id}
                     profilePicture={post.user.profile_image}
                     title={post.title}
                     author={post.user.name}

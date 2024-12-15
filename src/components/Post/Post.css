@@ -1,13 +1,18 @@
 
 
-#post{
+.post{
     border: 1px solid black;
     background-color: #F7F3E7;
     margin: 10px 0;
 
     display: grid;
     grid-template-columns: 10% 40% 15% auto auto 10%;
-    grid-template-rows: 90px
+    grid-template-rows: 90px;
+}
+
+.postLink{
+    text-decoration: none;
+    color: black;
 }
 
 #leftSideOfPost{

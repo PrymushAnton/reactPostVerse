@@ -1,0 +1,50 @@
+#PostPage {
+    grid-column: 2;
+
+    display: grid;
+    /* grid-template-columns: 13% auto 13%; */
+    grid-template-rows: 5px auto auto auto auto 5px;
+    min-height: calc(100vh - 120px);
+    row-gap: 10px;
+}
+
+#titleOfPostDiv{
+    grid-row: 2;
+    
+}
+
+#titleOfPost{
+    border-bottom: 1px solid black;
+}
+
+
+#imageOfPostDiv{
+    grid-row: 3;
+}
+
+
+#tagsOfPost{
+    grid-row: 4;
+}
+
+#tagsTitle{
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+#bodyMarkdown{
+    grid-row: 5;
+}
+
+#bodyMarkdownTitle{
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+#bodyMarkdownText{
+    /* width: 100%; */
+    text-wrap: wrap;
+    /* max-width: calc(100% - 70%); */
+    word-break: break-all;
+    white-space: normal;
+}
