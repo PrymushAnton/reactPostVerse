@@ -1,4 +1,12 @@
 
+.load{
+    position: absolute;
+    top: calc(50% - 48px);
+    left: calc(50% - 48px);
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
 
 #postsDiv{
     grid-row: 2;

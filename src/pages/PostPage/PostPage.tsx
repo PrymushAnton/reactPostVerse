@@ -3,6 +3,7 @@ import "./PostPage.css"
 import { useEffect, useState } from "react"
 import { usePostById } from "../../hooks/usePostById"
 import { useTitle } from "../../hooks/useTitle"
+import { RotatingLines } from "react-loader-spinner"
 
 
 
@@ -27,33 +28,48 @@ export function PostPage(){
     //     getAllPosts()
     // }, [params.id])
 
-    if (!postById){
-        return <div>There is no such post 😥</div>
-    }
+
 
     return (
         <div id="PostPage">
-            <div id="titleOfPostDiv">
-                <h1 id="titleOfPost">Title: {postById.title}</h1>
-            </div>
-            
+            {
+                (!postById)
+                ? (<div className = "load">
+                        <RotatingLines
+                        strokeColor="#c9bc95"
+                        visible={true}
+                        width="96"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        ariaLabel="rotating-lines-loading"
+                        />
+                    </div>)
+                :(<>
+                    <div id="titleOfPostDiv">
+                    <h1 id="titleOfPost">Title: {postById.title}</h1>
+                    </div>
+                    
 
-            <div id="imageOfPostDiv">
-                <img id="imageOfPost" src={postById.cover_image} alt="" />
-            </div>
-            
+                    <div id="imageOfPostDiv">
+                        <img id="imageOfPost" src={postById.cover_image} alt="" />
+                    </div>
+                    
 
-            <div id="tagsOfPost">
-                <h2 id="tagsTitle">Tags:</h2>
-                {postById.tags.map((tag) => {
-                    return <p>{tag}</p>
-                })}
-            </div>
+                    <div id="tagsOfPost">
+                        <h2 id="tagsTitle">Tags:</h2>
+                        {postById.tags.map((tag) => {
+                            return <p>{tag}</p>
+                        })}
+                    </div>
 
-            <div id="bodyMarkdown">
-                <h2 id="bodyMarkdownTitle">Body_markdown:</h2>
-                <p id="bodyMarkdownText">{postById.body_markdown}</p>
-            </div>
+                    <div id="bodyMarkdown">
+                        <h2 id="bodyMarkdownTitle">Body_markdown:</h2>
+                        <p id="bodyMarkdownText">{postById.body_markdown}</p>
+                    </div>
+                    
+                </>)
+                
+            }
             
         </div>
     )

@@ -26,6 +26,8 @@ export function usePostById(id: number){
         getPostById()
     }, [id])
 
+    
+
     return {
         postById:postById,
         isLoading: isLoading,

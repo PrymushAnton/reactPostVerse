@@ -1,3 +1,10 @@
+
+.load{
+    position: absolute;
+    top: calc(50% - 48px);
+    left: calc(50% - 48px);
+}
+
 #PostPage {
     grid-column: 2;
 
