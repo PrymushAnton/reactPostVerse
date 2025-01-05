@@ -84,9 +84,9 @@ export function PostList(){
                             }}
                         ></PostCard>
                     ))}
-                </>
-            
-            )}
+                    </>
+                
+                )}
         
         </div>
     )

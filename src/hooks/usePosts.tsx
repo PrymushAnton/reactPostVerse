@@ -29,9 +29,10 @@ export function usePosts(){
                 const response = await fetch("https://dev.to/api/articles")
                 const posts = await response.json()
                 setPosts(posts)
-                setIsLoading(false)
             } catch (error) {
                 setError(true)
+            } finally {
+                setIsLoading(false)
             }
         }
         getPosts()
