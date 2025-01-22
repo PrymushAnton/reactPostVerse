@@ -1,17 +1,19 @@
 import { useParams } from "react-router-dom"
 import "./PostPage.css"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { usePostById } from "../../hooks/usePostById"
 import { useTitle } from "../../hooks/useTitle"
 import { RotatingLines } from "react-loader-spinner"
-
+import { likedPostsContext } from "../../App"
+import { IPost } from "../../hooks/usePosts";
 
 
 
 export function PostPage(){
     const params = useParams()
     const {title} = useTitle("Post page")
-
+    const {likedPosts, addLikedPost} = useContext(likedPostsContext)
+    
     const {postById, isLoading, error} = usePostById(Number(params.id))
    
     // const [post, setPost] = useState({id: 0, title: "", cover_image: "", tags: [""], body_markdown:""})
@@ -27,8 +29,6 @@ export function PostPage(){
     //     }
     //     getAllPosts()
     // }, [params.id])
-    console.log(error)
-
 
     return (
         <div id="containerPostPage">
@@ -57,6 +57,7 @@ export function PostPage(){
                             <div id="PostPage">
                                 <div id="titleOfPostDiv">
                                     <h1 id="titleOfPost">Title: {postById?.title}</h1>
+                                    <button className="likePostButton" onClick={() => {postById && addLikedPost(postById)}}>Like</button>
                                 </div>
 
                                 <div id="imageOfPostDiv">
@@ -66,8 +67,8 @@ export function PostPage(){
 
                                 <div id="tagsOfPost">
                                     <h2 id="tagsTitle">Tags:</h2>
-                                    {postById?.tags.map((tag) => {
-                                        return <p>{tag}</p>
+                                    {postById?.tags.map((tag, index) => {
+                                        return <p key={index}>{tag}</p>
                                     })}
                                 </div>
 

@@ -21,22 +21,18 @@ export function usePostById(id: number){
                 }
                 const post = await response.json()
                 setPost(post)
-                console.log("try")
             } catch (error) {
                 console.log(typeof error)
                 const err = error instanceof Error ? error.message : undefined
                 setError(`${err}`)
-                console.log("error")
             } finally {
                 setIsLoading(false)
-                console.log("finally")
             }
             
         }
         getPostById()
     }, [id])
 
-    console.log(postById, isLoading, error)
 
     return {
         postById:postById,
