@@ -52,3 +52,20 @@
     justify-content: center;
     align-items: center;
 }
+
+.likeButton{
+    padding: 3px 5px;
+    border: 1px solid black;
+    border-radius: 7px;
+    background-color:#efe7cb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.likeButton:hover{
+    cursor: pointer;
+    background-color:#dbd4bc;
+    transition: background-color ease-in-out 300ms;
+}   

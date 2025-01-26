@@ -9,17 +9,25 @@ import { PostListPage } from "./pages/PostListPage/PostListPage";
 import { PostPage } from "./pages/PostPage/PostPage";
 import { MainPage } from "./pages/MainPage/MainPage";
 import { IPost } from "./hooks/usePosts";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+
+type SetFunction = (isButtonClicked: boolean) => void
 
 
 interface ILikedPostsContext{
     likedPosts: IPost[],
-    addLikedPost: (likedPost: IPost, button: HTMLButtonElement) => void
+    clickOnLikedPost: (
+        likedPost: IPost,
+        setFunction: SetFunction
+    ) => void
 }
 
 const initialValue: ILikedPostsContext = {
     likedPosts: [],
-    addLikedPost: (likedPost: IPost, button: HTMLButtonElement) => {}
+    clickOnLikedPost: (
+        likedPost: IPost,
+        setFunction: SetFunction
+    ) => {}
 }
 
 export const likedPostsContext = createContext<ILikedPostsContext>(initialValue)
@@ -28,22 +36,30 @@ export const likedPostsContext = createContext<ILikedPostsContext>(initialValue)
 export function App(){
 
     const [likedPosts, setLikedPosts] = useState<IPost[]>([])
-    function addLikedPost(likedPost: IPost, button: HTMLButtonElement){
+
+    // useEffect(() => {
+    //     console.log(likedPosts)
+    // }, [likedPosts])    
+
+    function clickOnLikedPost(likedPost: IPost, setFunction: SetFunction){
         if (!likedPosts.find(post => likedPost.id === post.id)){
             const tempArray = [
                 ...likedPosts,
                 likedPost
             ]
+            setFunction(true)
             setLikedPosts(tempArray)
-            button.disabled = true
-            console.log(likedPosts)
+        } else {
+            const tempArray = [...likedPosts]
+            const index = tempArray.findIndex(post => post.id === likedPost.id)
+            tempArray.splice(index, 1);
+            setFunction(false)
+            setLikedPosts(tempArray)
         }
-        
-
     }
 
     return (
-        <likedPostsContext.Provider value={{likedPosts: likedPosts, addLikedPost: addLikedPost}}>
+        <likedPostsContext.Provider value={{likedPosts: likedPosts, clickOnLikedPost: clickOnLikedPost}}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout></Layout>}>
