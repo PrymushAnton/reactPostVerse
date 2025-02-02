@@ -4,15 +4,17 @@ import { useContext, useEffect, useState } from "react"
 import { usePostById } from "../../hooks/usePostById"
 import { useTitle } from "../../hooks/useTitle"
 import { RotatingLines } from "react-loader-spinner"
-import { likedPostsContext } from "../../App"
+// import { likedPostsContext } from "../../App"
 import { IPost } from "../../hooks/usePosts";
+import { useLikedPostsContext } from "../../context/likedPostsContext"
+
 
 
 
 export function PostPage(){
     const params = useParams()
     const {title} = useTitle("Post page")
-    const {likedPosts, likePost, checkStatus, unlikePost} = useContext(likedPostsContext)
+    const {likedPosts, likePost, checkStatus, unlikePost} = useLikedPostsContext()
     
     const {postById, isLoading, error} = usePostById(Number(params.id))
 

@@ -1,0 +1,29 @@
+
+.likedPostsDiv{
+    grid-column: 2;
+    grid-row: 1;
+/* 
+    display: grid;
+    grid-template-rows: 5px auto auto auto auto 5px;
+    min-height: calc(100vh - 120px);
+    row-gap: 10px; */
+    display: flex;
+    flex-direction: column;
+}
+
+
+#likedPostsText{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* .post{
+    grid-column: 2 / span 5;
+} */

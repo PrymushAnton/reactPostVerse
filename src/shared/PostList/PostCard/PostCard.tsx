@@ -2,7 +2,8 @@ import { Link } from "react-router-dom"
 import "./PostCard.css"
 import { IPost } from "../../../hooks/usePosts"
 import { useContext, useEffect, useState } from "react"
-import { likedPostsContext } from "../../../App"
+// import { likedPostsContext } from "../../../App"
+import { useLikedPostsContext } from "../../../context/likedPostsContext"
 
 
 // interface IPostProps{
@@ -17,7 +18,7 @@ import { likedPostsContext } from "../../../App"
 
 
 export function PostCard(props: IPost){
-    const {likedPosts, likePost, checkStatus, unlikePost} = useContext(likedPostsContext)
+    const {likedPosts, likePost, checkStatus, unlikePost} = useLikedPostsContext()
 
     return (
         <div className="post">

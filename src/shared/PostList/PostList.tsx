@@ -56,16 +56,20 @@ export function PostList(){
                 : (<>
                     <div id="postsText">
                         <h1>Posts</h1>
-                        <select id="postCategories" onChange={(event) =>{
-                            // setSelectedCategory(event.target.value)
-                        }
-                        }>
-                            <option value="All">All</option>
-                            <option value="ReactJS">ReactJS</option>
-                            <option value="ExpressJS">ExpressJS</option>
-                            <option value="Django">Django</option>
-                            <option value="Python">Python</option>
-                        </select>
+                        <div>
+                            <Link to={"/liked-posts"}>Liked posts</Link>
+                            <select id="postCategories" onChange={(event) =>{
+                                // setSelectedCategory(event.target.value)
+                            }
+                            }>
+                                <option value="All">All</option>
+                                <option value="ReactJS">ReactJS</option>
+                                <option value="ExpressJS">ExpressJS</option>
+                                <option value="Django">Django</option>
+                                <option value="Python">Python</option>
+                            </select>
+                        </div>
+                        
                     </div>
                     {posts.map((post, index) => (
                         <PostCard
