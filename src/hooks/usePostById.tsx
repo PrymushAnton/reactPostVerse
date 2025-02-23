@@ -15,12 +15,12 @@ export function usePostById(id: number){
         async function getPostById(){
             try {
                 setIsLoading(true)
-                const response = await fetch(`https://dev.to/api/articles/${id}`)
+                const response = await fetch(`http://localhost:8000/api/post/${id}`)
                 if (!response.ok){
                     throw new Error(`Wrong id!`)
                 }
                 const post = await response.json()
-                setPost(post)
+                setPost(post.data)
             } catch (error) {
                 console.log(typeof error)
                 const err = error instanceof Error ? error.message : undefined

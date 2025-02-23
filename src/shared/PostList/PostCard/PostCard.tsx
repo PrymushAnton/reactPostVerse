@@ -24,23 +24,23 @@ export function PostCard(props: IPost){
         <div className="post">
             
             <div id="leftSideOfPost">
-                <img id="profilePicturePost" src={props.user.profile_image} alt="" />
+                {/* <img id="profilePicturePost" src={props.user.profile_image} alt="" /> */}
             
 
                 <div id="titleAuthorDate">
-                    <Link to={`/post/${props.id}`} className="postLink"><h4 id="title">{props.title.slice(0, 25)}...</h4></Link>
-                    <div id="lowerMenu">
+                    <Link to={`/post/${props.id}`} className="postLink"><h4 id="title">{props.name.slice(0, 25)}...</h4></Link>
+                    {/* <div id="lowerMenu">
                         <p id="author">{props.user.name}</p>
                         <p>•</p>
                         <p id="date">{props.published_at}</p>
-                    </div>
+                    </div> */}
                     
                 </div>
             </div>
 
             <div id="publicReactionsDiv">
                 <h4 id="public_reactions">Likes count</h4>
-                <p id="public_reactions_count">{props.public_reactions_count}</p>
+                {/* <p id="public_reactions_count">{props.public_reactions_count}</p> */}
                 <button className='likeButton' onClick={() => {
                     if (checkStatus(props)){
                         unlikePost(props)
@@ -64,7 +64,7 @@ export function PostCard(props: IPost){
 
             <div id="commentsDiv">
                 <h4 id="comments">Comments</h4>
-                <p id="comments_count">{props.comments_count}</p>
+                {/* <p id="comments_count">{props.comments_count}</p> */}
             </div>
 
         </div>

@@ -44,7 +44,7 @@ export function PostPage(){
                         : (
                             <div id="PostPage">
                                 <div id="titleOfPostDiv">
-                                    <h1 id="titleOfPost">Title: {postById?.title}</h1>
+                                    <h1 id="titleOfPost">Title: {postById?.name}</h1>
                                     <button className='likeButton' onClick={() => {
                                         if (postById) {
                                             if (checkStatus(postById)){
@@ -69,20 +69,20 @@ export function PostPage(){
                                 </div>
 
                                 <div id="imageOfPostDiv">
-                                    <img id="imageOfPost" src={postById?.cover_image} alt="" />
+                                    {/* <img id="imageOfPost" src={postById?.cover_image} alt="" /> */}
                                 </div>
                                 
 
                                 <div id="tagsOfPost">
                                     <h2 id="tagsTitle">Tags:</h2>
-                                    {postById?.tags.map((tag, index) => {
+                                    {/* {postById?.tags.map((tag, index) => {
                                         return <p key={index}>{tag}</p>
-                                    })}
+                                    })} */}
                                 </div>
 
                                 <div id="bodyMarkdown">
                                     <h2 id="bodyMarkdownTitle">Body_markdown:</h2>
-                                    <p id="bodyMarkdownText">{postById?.body_markdown}</p>
+                                    <p id="bodyMarkdownText">{postById?.text}</p>
                                 </div>
                                 
                             </div>
