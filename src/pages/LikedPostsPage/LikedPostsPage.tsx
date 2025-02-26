@@ -16,7 +16,7 @@ export function LikedPostsPage() {
 					<PostCard
 						key={index}
 						id={post.id}
-						name={post.name}
+						title={post.title}
 						text={post.text}
 						// comments_count={post.comments_count}
 						// public_reactions_count={post.public_reactions_count}

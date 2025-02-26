@@ -28,7 +28,7 @@ export function PostCard(props: IPost){
             
 
                 <div id="titleAuthorDate">
-                    <Link to={`/post/${props.id}`} className="postLink"><h4 id="title">{props.name.slice(0, 25)}...</h4></Link>
+                    <Link to={`/post/${props.id}`} className="postLink"><h4 id="title">{props.title.slice(0, 25)}...</h4></Link>
                     {/* <div id="lowerMenu">
                         <p id="author">{props.user.name}</p>
                         <p>•</p>

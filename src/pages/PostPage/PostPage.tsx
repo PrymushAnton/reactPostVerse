@@ -44,7 +44,7 @@ export function PostPage(){
                         : (
                             <div id="PostPage">
                                 <div id="titleOfPostDiv">
-                                    <h1 id="titleOfPost">Title: {postById?.name}</h1>
+                                    <h1 id="titleOfPost">Title: {postById?.title}</h1>
                                     <button className='likeButton' onClick={() => {
                                         if (postById) {
                                             if (checkStatus(postById)){

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 export interface IPost{
     id: number,
-    name: string,
+    title: string,
     text: string
     // comments_count: number,
     // public_reactions_count: number,
@@ -29,7 +29,7 @@ export function usePosts(){
             try{
                 const response = await fetch("http://localhost:8000/api/post/all")
                 const result = await response.json()
-                setPosts(result.data.posts)
+                setPosts(result.data)
             } catch (error) {
                 setError(true)
             } finally {

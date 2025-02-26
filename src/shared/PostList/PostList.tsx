@@ -81,7 +81,7 @@ export function PostList(){
                         <PostCard
                             key={index}
                             id={post.id}
-                            name={post.name}
+                            title={post.title}
 						    text={post.text}
 
                             // comments_count={post.comments_count}
