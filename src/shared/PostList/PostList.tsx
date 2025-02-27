@@ -2,36 +2,36 @@ import { PostCard } from "./PostCard/PostCard"
 import "./PostList.css"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { usePosts } from "../../hooks/usePosts"
+import { IPost, usePosts } from "../../hooks/usePosts"
 
 import { RotatingLines } from "react-loader-spinner"
+import { useTags } from "../../hooks/useTags"
 
 
 export function PostList(){
 
-    const {posts, isLoading, error} = usePosts()
+    const {posts, isLoading: isLoadingPosts, error: errorPosts} = usePosts()
+    const [filteredPosts, setFilteredPosts] = useState<IPost[]>([])
 
     useEffect(() => {
         console.log(posts)
-
+        setFilteredPosts(posts)
     }, [posts])
 
-    // const {postById} = usePostsById()
 
-
-    // const [filteredPosts, setFilteredPosts] = useState(posts)
+    const {tags, isLoading, error} = useTags()
     
-    // const [selectedCategory, setSelectedCategory] = useState('All')
+    const [selectedTag, setSelectedTag] = useState('All')
 
-    // useEffect(()=>{
-    //     if(selectedCategory === 'All'){
-    //         setFilteredPosts(posts)
-    //     } else{
-    //         setFilteredPosts(posts.filter( (post)=>{
-    //             return post.category === selectedCategory
-    //         }))
-    //     }
-    // }, [selectedCategory])
+    useEffect(()=>{
+        if(selectedTag === 'All'){
+            setFilteredPosts(posts)
+        } else{
+            setFilteredPosts(posts.filter((post)=>{
+                return post.Tag.name === selectedTag
+            }))
+        }
+    }, [selectedTag])
 
     // useEffect(() => {
     //     async function getAllPosts(){
@@ -46,7 +46,7 @@ export function PostList(){
     return (
         <div id="postsDiv">
             {
-                isLoading == true 
+                isLoadingPosts === true 
                 ? (
                 <div className = "load">
                     <RotatingLines
@@ -60,42 +60,35 @@ export function PostList(){
                 </div>
                 )
                 : (<>
-                    <div id="postsText">
-                        <h1>Posts</h1>
-                        <div>
-                            <Link to={"/liked-posts"}>Liked posts</Link>
-                            <select id="postCategories" onChange={(event) =>{
-                                // setSelectedCategory(event.target.value)
-                            }
-                            }>
-                                <option value="All">All</option>
-                                <option value="ReactJS">ReactJS</option>
-                                <option value="ExpressJS">ExpressJS</option>
-                                <option value="Django">Django</option>
-                                <option value="Python">Python</option>
-                            </select>
+                        <div id="postsText">
+                            <h1>Posts</h1>
+                            <div>
+                                <Link to={"/liked-posts"}>Liked posts</Link>
+                                <select id="postCategories" onChange={(event) =>{
+                                    setSelectedTag(event.target.value)
+                                }
+                                }>
+                                    <option value="All">All</option>
+                                    {tags.map((tag) => {
+                                        return <option value={tag.name}>{tag.name}</option>
+                                    })}
+                                </select>
+                            </div>
+                            
                         </div>
-                        
-                    </div>
-                    {posts.map((post, index) => (
-                        <PostCard
-                            key={index}
-                            id={post.id}
-                            title={post.title}
-						    text={post.text}
-
-                            // comments_count={post.comments_count}
-                            // public_reactions_count={post.public_reactions_count}
-                            // published_at={post.published_at.split('T')[0]}
-                            // cover_image={post.cover_image}
-                            // tags={post.tags}
-                            // body_markdown={post.body_markdown}
-                            // user={{
-                            //     profile_image: post.user.profile_image,
-                            //     name : post.user.name
-                            // }}
-                        ></PostCard>
-                    ))}
+                        {filteredPosts.map((post, index) => (
+                            <PostCard
+                                key={index}
+                                id={post.id}
+                                title={post.title}
+                                text={post.text}
+                                userId={post.userId}
+                                tagId={post.tagId}
+                                Comments={post.Comments}
+                                User={post.User}
+                                Tag={post.Tag}
+                            ></PostCard>
+                        ))}
                     </>
                 
                 )}

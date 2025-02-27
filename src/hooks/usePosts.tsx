@@ -1,19 +1,35 @@
 import { useEffect, useState } from "react"
 
+export interface IUser {
+    id: number,
+    username: string,
+    email: string,
+    password: string,
+    role: string
+}
+
+export interface ITag{
+    id: number,
+    name: string
+}
+
+export interface IComment{
+    id: number;
+    title: string;
+    text: string;
+    userId: number;
+    postId: number;
+}
+
 export interface IPost{
     id: number,
+    text: string,
     title: string,
-    text: string
-    // comments_count: number,
-    // public_reactions_count: number,
-    // published_at: string,
-    // cover_image: string,
-    // tags: string[],
-    // body_markdown: string,
-    // user: {
-    //     profile_image: string,
-    //     name: string
-    // }
+    userId: number,
+    tagId: number,
+    Comments: IComment[],
+    User: IUser,
+    Tag: ITag
 }
 
 

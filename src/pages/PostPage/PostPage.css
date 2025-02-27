@@ -28,12 +28,19 @@
 
 #PostPage {
     
-
     display: grid;
     /* grid-template-columns: 13% auto 13%; */
-    grid-template-rows: 5px auto auto auto auto 5px;
+    grid-template-rows: 5px auto auto auto 5px;
     min-height: calc(100vh - 120px);
     row-gap: 10px;
+}
+
+#titleWithLikeDiv{
+    border-bottom: 1px solid black;
+
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 0 0;
 }
 
 #titleOfPostDiv{
@@ -42,20 +49,12 @@
 }
 
 #titleOfPost{
-    border-bottom: 1px solid black;
 }
 
-
-#imageOfPostDiv{
-    grid-row: 3;
-}
-#imageOfPostDiv img{
-    width: 100%;
-}
 
 
 #tagsOfPost{
-    grid-row: 4;
+    grid-row: 3;
 }
 
 #tagsTitle{
@@ -63,24 +62,25 @@
     margin-bottom: 10px;
 }
 
-#bodyMarkdown{
-    grid-row: 5;
+#textDiv{
+    grid-row: 4;
+
 }
 
-#bodyMarkdownTitle{
+#textTitle{
     border-bottom: 1px solid black;
     margin-bottom: 10px;
 }
 
-#bodyMarkdownText{
-    /* width: 100%; */
+#textOfPost{
     text-wrap: wrap;
-    /* max-width: calc(100% - 70%); */
     word-break: break-all;
     white-space: normal;
 }
 
 .likePostButton{
+    width: max-content;
+    height: max-content;
     padding: 3px 5px;
     border: 1px solid black;
     border-radius: 7px;
@@ -89,6 +89,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+
 }
 
 .likePostButton:hover{

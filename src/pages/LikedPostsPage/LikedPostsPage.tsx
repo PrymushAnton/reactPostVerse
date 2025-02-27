@@ -18,16 +18,11 @@ export function LikedPostsPage() {
 						id={post.id}
 						title={post.title}
 						text={post.text}
-						// comments_count={post.comments_count}
-						// public_reactions_count={post.public_reactions_count}
-						// published_at={post.published_at}
-						// cover_image={post.cover_image}
-						// tags={post.tags}
-						// body_markdown={post.body_markdown}
-						// user={{
-						// 	profile_image: post.user.profile_image,
-						// 	name: post.user.name,
-						// }}
+						userId={post.userId}
+						tagId={post.tagId}
+						Comments={post.Comments}
+						User={post.User}
+						Tag={post.Tag}
 					></PostCard>
 				);
 			})}
