@@ -1,0 +1,5 @@
+export function IconLogin() {
+    return (
+        <svg id="logInIcon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5714 15V17.8572C13.5714 18.236 13.4209 18.5994 13.153 18.8673C12.8851 19.1352 12.5218 19.2857 12.1429 19.2857H2.14287C1.76398 19.2857 1.40062 19.1352 1.13271 18.8673C0.864804 18.5994 0.714294 18.236 0.714294 17.8572V2.14287C0.714294 1.76398 0.864804 1.40062 1.13271 1.13271C1.40062 0.864804 1.76398 0.714294 2.14287 0.714294H12.1429C12.5218 0.714294 12.8851 0.864804 13.153 1.13271C13.4209 1.40062 13.5714 1.76398 13.5714 2.14287V5.00001" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.2857 10H7.85715" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.7143 7.14285L7.85715 10L10.7143 12.8571" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    )
+}

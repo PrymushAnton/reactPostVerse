@@ -1,3 +1,4 @@
+// не использованные импорты
 import { Layout } from "./shared/Layout/Layout";
 import { Main } from "./shared/Main/Main";
 import { Header } from "./shared/Header/Header";
@@ -16,6 +17,7 @@ import { LikedPostsContextProvider } from "./context/likedPostsContext";
 import { AppRoutes } from "./Routes/Routes";
 
 export function App() {
+    // лишние пустые строки
 	
 
 	return (

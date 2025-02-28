@@ -13,7 +13,9 @@ import { useLikedPostsContext } from "../../context/likedPostsContext"
 
 export function PostPage(){
     const params = useParams()
+    // можно упростить
     const {title} = useTitle("Post page")
+    // likedPosts не используешь
     const {likedPosts, likePost, checkStatus, unlikePost} = useLikedPostsContext()
     
     const {postById, isLoading, error} = usePostById(Number(params.id))

@@ -22,7 +22,9 @@
     background-color: #F7F3E7;
 }
 
-#usernameInputRegistrationContainer, #emailInputRegistrationContainer, #passwordInputRegistrationContainer {
+#usernameInputRegistrationContainer, 
+#emailInputRegistrationContainer, 
+#passwordInputRegistrationContainer {
     display: flex;
     flex-direction: column;
     justify-content: start;

@@ -9,16 +9,17 @@ import { useTags } from "../../hooks/useTags"
 
 
 export function PostList(){
-
+    // еррор не используешь
     const {posts, isLoading: isLoadingPosts, error: errorPosts} = usePosts()
     const [filteredPosts, setFilteredPosts] = useState<IPost[]>([])
 
     useEffect(() => {
+        // консоль лог можно убрать
         console.log(posts)
         setFilteredPosts(posts)
     }, [posts])
 
-
+    // isLoadin, error по хорошему надо обрабатывать 
     const {tags, isLoading, error} = useTags()
     
     const [selectedTag, setSelectedTag] = useState('All')
@@ -46,7 +47,7 @@ export function PostList(){
     return (
         <div id="postsDiv">
             {
-                isLoadingPosts === true 
+                isLoadingPosts 
                 ? (
                 <div className = "load">
                     <RotatingLines
@@ -79,14 +80,7 @@ export function PostList(){
                         {filteredPosts.map((post, index) => (
                             <PostCard
                                 key={index}
-                                id={post.id}
-                                title={post.title}
-                                text={post.text}
-                                userId={post.userId}
-                                tagId={post.tagId}
-                                Comments={post.Comments}
-                                User={post.User}
-                                Tag={post.Tag}
+                                post={post}
                             ></PostCard>
                         ))}
                     </>

@@ -8,8 +8,6 @@ import { RegistrationPage } from "../pages/RegistrationPage/RegistrationPage";
 import { LoginPage } from "../pages/LoginPage/LoginPage";
 
 
-
-
 export function AppRoutes(){
     
     return (
@@ -19,11 +17,13 @@ export function AppRoutes(){
                     <Route
                         path="/posts"
                         element={<PostListPage></PostListPage>}
-                    ></Route>
+                        // </Route> -> < />
+                    />
                     <Route
                         path="/post/:id"
                         element={<PostPage></PostPage>}
                     ></Route>
+                    {/* лучше перенести над постами */}
                     <Route path="/" element={<MainPage></MainPage>}></Route>
 
                     <Route path="/liked-posts" element={<LikedPostsPage></LikedPostsPage>}></Route>

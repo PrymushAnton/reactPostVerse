@@ -2,6 +2,7 @@
 
 .post{
     border: 1px solid black;
+    /* все цвета выносить в перемнные css */
     background-color: #F7F3E7;
     margin: 10px 0;
 

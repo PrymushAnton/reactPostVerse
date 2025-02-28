@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { IPost } from "../hooks/usePosts";
+// пустые строки
 
 
 
@@ -19,14 +20,15 @@ const initialValue: ILikedPostsContext = {
     likePost: (likedPost: IPost) => {},
     unlikePost: (likedPost: IPost) => {},
 };
-
+// экспортировать не надо, тк есть хук useLikedPostsContext
 export const likedPostsContext = createContext<ILikedPostsContext>(initialValue);
 
 
 interface ILikedPostsContextProps{
+    // children по хорошему делать опциональными
     children: ReactNode
 }
-
+// вот его используем вместо export контекста
 export function useLikedPostsContext() {
     return useContext(likedPostsContext)
 }
@@ -49,6 +51,7 @@ export function LikedPostsContextProvider(props: ILikedPostsContextProps) {
         if (!checkStatus(likedPost)) {
             const tempArray = [...likedPosts, likedPost];
             setLikedPosts(tempArray);
+        // else не надо
         } else {
             const tempArray = [...likedPosts];
             const index = tempArray.findIndex(
@@ -57,9 +60,15 @@ export function LikedPostsContextProvider(props: ILikedPostsContextProps) {
             tempArray.splice(index, 1);
             setLikedPosts(tempArray);
         }
+
+        // if (checkStatus(likedPost)) return
+
+        // const tempArray = [...likedPosts, likedPost];
+        // setLikedPosts(tempArray);
     }
 
     function unlikePost(likedPost: IPost) {
+        // if (!checkStatus(likedPost)) return
         if (checkStatus(likedPost)) {
             const tempArray = [...likedPosts];
             const index = tempArray.findIndex(

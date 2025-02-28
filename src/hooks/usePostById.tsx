@@ -12,10 +12,16 @@ export function usePostById(id: number){
     const [error, setError] = useState<string>()
 
     useEffect(() => {
+        // Number('dthrx') -> NaN
+        // NaN -> number
+        // NaN -> Boolean(NaN) -> false
+        if (isNaN(id)) return
+
         async function getPostById(){
             try {
                 setIsLoading(true)
                 const response = await fetch(`http://localhost:8000/api/post/${id}`)
+                // throw нельзя
                 if (!response.ok){
                     throw new Error(`Wrong id!`)
                 }
