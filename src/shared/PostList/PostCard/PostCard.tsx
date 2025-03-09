@@ -1,33 +1,17 @@
 import { Link } from "react-router-dom"
 import "./PostCard.css"
 import { IPost } from "../../../hooks/usePosts"
-// не используешь
-import { useContext, useEffect, useState } from "react"
-// import { likedPostsContext } from "../../../App"
 import { useLikedPostsContext } from "../../../context/likedPostsContext"
-
-
-// interface IPostpost{
-//     id: number,
-//     profilePicture: any,
-//     title: string,
-//     author: string,
-//     published_at: string,
-//     public_reactions_count: number,
-//     comments_count: number
-// }
 
 
 export function PostCard(props: {post: IPost}){
     const {post} = props
-    // likedPosts не используешь
-    const {likedPosts, likePost, checkStatus, unlikePost} = useLikedPostsContext()
+    const {likePost, checkStatus, unlikePost} = useLikedPostsContext()
 
     return (
         <div className="post">
             
             <div id="leftSideOfPost">
-            
 
                 <div id="titleAuthor">
                     <Link to={`/post/${post.id}`} className="postLink">

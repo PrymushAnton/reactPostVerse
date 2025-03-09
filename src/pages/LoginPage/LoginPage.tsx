@@ -2,7 +2,7 @@ import "./LoginPage.css"
 import { useForm } from "react-hook-form"
 
 // ILoginForm
-interface IForm {
+interface ILoginForm {
     email: string,
     password: string
 }
@@ -10,18 +10,17 @@ interface IForm {
 
 export function LoginPage() {
 
-    const {register, handleSubmit, formState} = useForm <IForm>({
+    const {register, handleSubmit, formState} = useForm <ILoginForm>({
         mode: "onSubmit"
     })
-    // onSubmit
-    // onLoginSubmit
-    function submit(data: IForm){
+
+    function onSubmit(data: ILoginForm){
         console.log(data)
     }
 
     return (
         <div id="loginFormContainer">
-            <form id="loginForm" onSubmit={handleSubmit(submit)}>
+            <form id="loginForm" onSubmit={handleSubmit(onSubmit)}>
                 
                 
                 <div id="emailInputLoginContainer">

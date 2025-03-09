@@ -1,3 +1,9 @@
+:root {
+    --light-beige: #F7F3E7;
+    --normal-beige: #efe7cb;
+    --darker-beige: #dbd4bc;
+    --dark-beige: rgb(187, 178, 152);
+}
 
 
 header{
@@ -12,7 +18,7 @@ header{
     grid-template-rows: 60px;
     align-items: center;
     justify-items: center;
-    background-color: #F7F3E7;
+    background-color: var(--light-beige);
     height: 60px;
 }
 
@@ -26,9 +32,6 @@ header a{
 #logoPostsHeader{
     grid-column: 2;
     justify-self: start;
-    /* display: grid;
-    grid-template-columns: auto auto auto;
-    align-items: center; */
 
     display: flex;
     align-items: center;
@@ -42,7 +45,7 @@ header a{
 }
 
 #postsHeader:hover{
-    color: rgb(187, 178, 152);
+    color: var(--dark-beige);
     transition: color ease-in-out 300ms;
 }
 
@@ -57,14 +60,14 @@ header a{
     background-color: white;
     border: none;
     padding: 0 15px;
-    background-image: url("./images/magnifyingGlass.png");
+    background-image: url("../../assets/images/magnifyingGlass.png");
     background-size: 15px 15px;
     background-position: 95% 50%; 
     background-repeat: no-repeat;
 }
 
 #searchHeader:focus{
-    outline: 2px solid #dbd4bc;
+    outline: 2px solid var(--darker-beige);
 }
 
 
@@ -87,11 +90,11 @@ header a{
 }
 
 #logIn:hover{
-    color: rgb(187, 178, 152);
+    color: var(--dark-beige);
     transition: color ease-in-out 300ms;
 }
 #logIn:hover > #logInIcon path{
-    stroke: rgb(187, 178, 152);
+    stroke: var(--dark-beige);
     transition: stroke ease-in-out 300ms;
 }
 
@@ -103,12 +106,12 @@ header a{
 }
 
 #signUp:hover{
-    color: rgb(187, 178, 152);
+    color: var(--dark-beige);
     transition: color ease-in-out 300ms;
 }
 
 #signUp:hover > #signUpIcon path{
-    stroke: rgb(187, 178, 152);
+    stroke: var(--dark-beige);
     transition: stroke ease-in-out 300ms;
 }
 

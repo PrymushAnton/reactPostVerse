@@ -14,8 +14,6 @@ export function PostList(){
     const [filteredPosts, setFilteredPosts] = useState<IPost[]>([])
 
     useEffect(() => {
-        // консоль лог можно убрать
-        console.log(posts)
         setFilteredPosts(posts)
     }, [posts])
 
@@ -34,22 +32,12 @@ export function PostList(){
         }
     }, [selectedTag])
 
-    // useEffect(() => {
-    //     async function getAllPosts(){
-    //         const response = await fetch("https://dev.to/api/articles")
-    //         const posts = await response.json()
-    //         setFilteredPosts(posts)
-    //     }
-    //     getAllPosts()
-    // }, [])
-
-
     return (
         <div id="postsDiv">
             {
-                isLoadingPosts 
+                isLoadingPosts || isLoading 
                 ? (
-                <div className = "load">
+                <div className = "loadPostList">
                     <RotatingLines
                     strokeColor="#c9bc95"
                     visible={true}
@@ -60,31 +48,44 @@ export function PostList(){
                     />
                 </div>
                 )
-                : (<>
-                        <div id="postsText">
-                            <h1>Posts</h1>
-                            <div>
-                                <Link to={"/liked-posts"}>Liked posts</Link>
-                                <select id="postCategories" onChange={(event) =>{
-                                    setSelectedTag(event.target.value)
-                                }
-                                }>
-                                    <option value="All">All</option>
-                                    {tags.map((tag) => {
-                                        return <option value={tag.name}>{tag.name}</option>
-                                    })}
-                                </select>
-                            </div>
-                            
+                : (errorPosts)
+                    ? (
+                        <div className="errorPostList">
+                            <h1>{errorPosts}</h1>
                         </div>
-                        {filteredPosts.map((post, index) => (
-                            <PostCard
-                                key={index}
-                                post={post}
-                            ></PostCard>
-                        ))}
-                    </>
-                
+                    )
+                    : (error)
+                        ? (
+                            <div className="errorPostList">
+                                <h1>{error}</h1>
+                            </div>
+                        )
+                        : (<>
+                            <div id="postsText">
+                                <h1>Posts</h1>
+
+                                <div>
+                                    <Link to={"/liked-posts"}>Liked posts</Link>
+                                    <select id="postCategories" onChange={(event) =>{
+                                        setSelectedTag(event.target.value)
+                                    }
+                                    }>
+                                        <option value="All">All</option>
+                                        {tags.map((tag) => {
+                                            return <option value={tag.name}>{tag.name}</option>
+                                        })}
+                                    </select>
+                                </div>
+                                
+                            </div>
+                            {filteredPosts.map((post, index) => (
+                                <PostCard
+                                    key={index}
+                                    post={post}
+                                ></PostCard>
+                            ))}
+                        </>
+                    
                 )}
         
         </div>

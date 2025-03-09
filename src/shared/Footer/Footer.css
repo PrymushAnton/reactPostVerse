@@ -1,4 +1,9 @@
-
+:root {
+    --light-beige: #F7F3E7;
+    --normal-beige: #efe7cb;
+    --darker-beige: #dbd4bc;
+    --dark-beige: rgb(187, 178, 152);
+}
 
 footer{
     grid-row: 3;
@@ -10,7 +15,7 @@ footer{
     grid-template-rows: 60px;
     align-items: center;
     justify-items: center;
-    background-color: #F7F3E7;
+    background-color: var(--light-beige);
     height: 60px;
 }
 

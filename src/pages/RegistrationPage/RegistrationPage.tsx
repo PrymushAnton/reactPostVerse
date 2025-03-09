@@ -1,8 +1,7 @@
 import "./RegistrationPage.css"
 import { useForm } from "react-hook-form"
 
-// IRegistrationForm
-interface IForm {
+interface IRegistrationForm {
     username: string,
     email: string,
     password: string
@@ -11,11 +10,11 @@ interface IForm {
 
 export function RegistrationPage() {
 
-    const {register, handleSubmit, formState} = useForm <IForm>({
+    const {register, handleSubmit, formState} = useForm <IRegistrationForm>({
         mode: "onSubmit"
     })
 
-    function submit(data: IForm){
+    function submit(data: IRegistrationForm){
         console.log(data)
     }
 
@@ -24,9 +23,6 @@ export function RegistrationPage() {
             <form id="registrationForm" onSubmit={handleSubmit(submit)}>
                 
                 <div id="usernameInputRegistrationContainer">
-                    {/* <label>
-                        <input type="text" />
-                    </label> */}
                     <label htmlFor="usernameInputRegistration">Username</label>
                     <input id="usernameInputRegistration" type="text" {...register("username", {
                         required: {value: true,  message: "This field is required"},

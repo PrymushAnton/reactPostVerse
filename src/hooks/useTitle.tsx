@@ -9,5 +9,4 @@ export function useTitle(newTitle: string) {
         document.title = title;
     }, [title])
 
-    return { title: title, }
 }

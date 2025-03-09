@@ -1,9 +1,13 @@
-
+:root {
+    --light-beige: #F7F3E7;
+    --normal-beige: #efe7cb;
+    --darker-beige: #dbd4bc;
+    --dark-beige: rgb(187, 178, 152);
+}
 
 .post{
     border: 1px solid black;
-    /* все цвета выносить в перемнные css */
-    background-color: #F7F3E7;
+    background-color: var(--light-beige);
     margin: 10px 0;
 
     display: grid;
@@ -58,7 +62,7 @@
     padding: 3px 5px;
     border: 1px solid black;
     border-radius: 7px;
-    background-color:#efe7cb;
+    background-color: var(--normal-beige);
 
     display: flex;
     justify-content: center;
@@ -67,6 +71,6 @@
 
 .likeButton:hover{
     cursor: pointer;
-    background-color:#dbd4bc;
+    background-color: var(--darker-beige);
     transition: background-color ease-in-out 300ms;
 }   

@@ -1,4 +1,9 @@
-
+:root {
+    --light-beige: #F7F3E7;
+    --normal-beige: #efe7cb;
+    --darker-beige: #dbd4bc;
+    --dark-beige: rgb(187, 178, 152);
+}
 
 #registrationFormContainer{
     grid-column: 2;
@@ -17,9 +22,9 @@
     align-items: center;
     gap: 10px;
 
-    border: 4px dotted #dbd4bc;
+    border: 4px dotted var(--darker-beige);
     padding: 40px;
-    background-color: #F7F3E7;
+    background-color: var(--light-beige);
 }
 
 #usernameInputRegistrationContainer, 
@@ -34,8 +39,8 @@
     width: 100px;
     height: 25px;
 
-    background-color: #dbd4bc;
-    border: 1px solid rgb(187, 178, 152);
+    background-color: var(--darker-beige);
+    border: 1px solid var(--dark-beige);
     border-radius: 10px;
 }
 
@@ -43,6 +48,6 @@
     cursor: pointer;
 
     transition: background-color ease-out 300ms;
-    background-color: #F7F3E7;
+    background-color: var(--light-beige);
 
 }

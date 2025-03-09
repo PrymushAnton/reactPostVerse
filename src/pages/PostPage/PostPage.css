@@ -1,11 +1,19 @@
+:root {
+    --light-beige: #F7F3E7;
+    --normal-beige: #efe7cb;
+    --darker-beige: #dbd4bc;
+    --dark-beige: rgb(187, 178, 152);
+}
 
-/* .load{
-    position: absolute;
-    top: calc(50% - 48px);
-    left: calc(50% - 48px);
-} */
+.loadPostPage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-#errorWrongId{
+#errorPostPage{
     width: 100%;
     height: 100%;
     display: flex;
@@ -13,6 +21,7 @@
     align-items: center;
     justify-content: center;
 }
+
 #errorWrongId h1{
     color: red;
 }
@@ -27,9 +36,7 @@
 }
 
 #PostPage {
-    
     display: grid;
-    /* grid-template-columns: 13% auto 13%; */
     grid-template-rows: 5px auto auto auto 5px;
     min-height: calc(100vh - 120px);
     row-gap: 10px;
@@ -37,7 +44,6 @@
 
 #titleWithLikeDiv{
     border-bottom: 1px solid black;
-
     display: flex;
     justify-content: space-between;
     padding: 0 10px 0 0;
@@ -47,11 +53,6 @@
     grid-row: 2;
     
 }
-
-#titleOfPost{
-}
-
-
 
 #tagsOfPost{
     grid-row: 3;
@@ -84,7 +85,7 @@
     padding: 3px 5px;
     border: 1px solid black;
     border-radius: 7px;
-    background-color:#efe7cb;
+    background-color:var(--normal-beige);
 
     display: flex;
     justify-content: center;
@@ -95,6 +96,6 @@
 
 .likePostButton:hover{
     cursor: pointer;
-    background-color:#dbd4bc;
+    background-color:var(--darker-beige);
     transition: background-color ease-in-out 300ms;
 }

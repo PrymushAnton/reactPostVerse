@@ -8,7 +8,7 @@ import { IPost } from "./usePosts"
 export function usePostById(id: number){
 
     const [postById, setPost] = useState<IPost>()
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>()
 
     useEffect(() => {
@@ -21,16 +21,16 @@ export function usePostById(id: number){
             try {
                 setIsLoading(true)
                 const response = await fetch(`http://localhost:8000/api/post/${id}`)
-                // throw нельзя
-                if (!response.ok){
-                    throw new Error(`Wrong id!`)
+
+                const result = await response.json()
+                if (result.status === "error") {
+                    setError(result.message)
+                    return
                 }
-                const post = await response.json()
-                setPost(post.data)
+                setPost(result.data)
             } catch (error) {
-                console.log(typeof error)
                 const err = error instanceof Error ? error.message : undefined
-                setError(`${err}`)
+                setError(err)
             } finally {
                 setIsLoading(false)
             }

@@ -39,18 +39,23 @@ export function usePosts(){
 
     const [posts, setPosts] = useState<IPost[]>([])
     const [isLoading, setIsLoading] = useState(false)
-    // boolean для еррор так себе, лучше string
-    const [error, setError] = useState(false)
+    const [error, setError] = useState<string>()
 
     useEffect(() => {
         async function getPosts(){
             try{
-                // нету setIsLoading
+                setIsLoading(true)
                 const response = await fetch("http://localhost:8000/api/post/all")
                 const result = await response.json()
+
+                if (result.status === "error") {
+                    setError(result.message)
+                    return
+                }
                 setPosts(result.data)
             } catch (error) {
-                setError(true)
+                const err = error instanceof Error ? error.message : undefined
+                setError(err)
             } finally {
                 setIsLoading(false)
             }
