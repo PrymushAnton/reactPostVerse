@@ -7,38 +7,43 @@ import { LikedPostsPage } from "../pages/LikedPostsPage/LikedPostsPage";
 import { RegistrationPage } from "../pages/RegistrationPage/RegistrationPage";
 import { LoginPage } from "../pages/LoginPage/LoginPage";
 
+export function AppRoutes() {
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Layout/>}>
+					<Route 
+                        path="/" 
+                        element={<MainPage/>} 
+                    />
 
+					<Route
+						path="/posts"
+						element={<PostListPage/>}
+					/>
 
+					<Route 
+                        path="/post/:id" 
+                        element={<PostPage/>} 
+                    />
 
-export function AppRoutes(){
-    
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Layout></Layout>}>
-                    <Route
-                        path="/posts"
-                        element={<PostListPage></PostListPage>}
-                    ></Route>
-                    <Route
-                        path="/post/:id"
-                        element={<PostPage></PostPage>}
-                    ></Route>
-                    <Route path="/" element={<MainPage></MainPage>}></Route>
+					<Route
+						path="/liked-posts"
+						element={<LikedPostsPage/>}
+					/>
 
-                    <Route path="/liked-posts" element={<LikedPostsPage></LikedPostsPage>}></Route>
+					<Route
+						path="/register"
+						element={<RegistrationPage/>}
+					/>
+
+					<Route 
+                        path="/login" 
+                        element={<LoginPage/>} 
+                    />
                     
-                    <Route
-                        path="/register"
-                        element={<RegistrationPage></RegistrationPage>}
-                    ></Route>
-
-                    <Route
-                        path="/login"
-                        element={<LoginPage></LoginPage>}
-                    ></Route>
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    )
+				</Route>
+			</Routes>
+		</BrowserRouter>
+	);
 }

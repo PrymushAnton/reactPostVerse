@@ -1,20 +1,15 @@
 import { useParams } from "react-router-dom"
 import "./PostPage.css"
-import { useContext, useEffect, useState } from "react"
 import { usePostById } from "../../hooks/usePostById"
 import { useTitle } from "../../hooks/useTitle"
 import { RotatingLines } from "react-loader-spinner"
-// import { likedPostsContext } from "../../App"
-import { IPost } from "../../hooks/usePosts";
 import { useLikedPostsContext } from "../../context/likedPostsContext"
-
-
 
 
 export function PostPage(){
     const params = useParams()
-    const {title} = useTitle("Post page")
-    const {likedPosts, likePost, checkStatus, unlikePost} = useLikedPostsContext()
+    useTitle("Post page")
+    const {likePost, checkStatus, unlikePost} = useLikedPostsContext()
     
     const {postById, isLoading, error} = usePostById(Number(params.id))
 
@@ -24,7 +19,7 @@ export function PostPage(){
             {   
                 (isLoading === true)
                     ? (
-                        <div className="load">
+                        <div className="loadPostPage">
                             <RotatingLines
                             strokeColor="#c9bc95"
                             visible={true}
@@ -37,9 +32,8 @@ export function PostPage(){
                     )
                     : (error)
                         ? (
-                            <div id="errorWrongId">
+                            <div id="errorPostPage">
                                 <h1>{error}</h1>
-                                <img id="errorImage" src="https://images3.alphacoders.com/881/881619.jpg" alt="" />
                             </div>
                         )
                         : (

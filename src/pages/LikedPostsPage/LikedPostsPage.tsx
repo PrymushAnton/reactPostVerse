@@ -15,14 +15,7 @@ export function LikedPostsPage() {
 				return (
 					<PostCard
 						key={index}
-						id={post.id}
-						title={post.title}
-						text={post.text}
-						userId={post.userId}
-						tagId={post.tagId}
-						Comments={post.Comments}
-						User={post.User}
-						Tag={post.Tag}
+						post={post}
 					></PostCard>
 				);
 			})}

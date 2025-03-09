@@ -1,11 +1,10 @@
-import logoFooter from "./images/logo.png"
+import logoFooter from "../../assets/images/logo.png"
 import "./Footer.css"
 import { Link } from "react-router-dom"
 
 export function Footer(){
     return (
         <footer>
-            {/* <a id="footerLink" href="#"></a> */}
             <Link to='/' id="footerLink">
                 <img id="logoFooter" src={logoFooter} alt="" />
             </Link>

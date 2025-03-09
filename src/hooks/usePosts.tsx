@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 
+// для интерфейсов создать папку types и в нее закинуть все интерфейсы
 export interface IUser {
     id: number,
     username: string,
@@ -38,16 +39,23 @@ export function usePosts(){
 
     const [posts, setPosts] = useState<IPost[]>([])
     const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState(false)
+    const [error, setError] = useState<string>()
 
     useEffect(() => {
         async function getPosts(){
             try{
+                setIsLoading(true)
                 const response = await fetch("http://localhost:8000/api/post/all")
                 const result = await response.json()
+
+                if (result.status === "error") {
+                    setError(result.message)
+                    return
+                }
                 setPosts(result.data)
             } catch (error) {
-                setError(true)
+                const err = error instanceof Error ? error.message : undefined
+                setError(err)
             } finally {
                 setIsLoading(false)
             }

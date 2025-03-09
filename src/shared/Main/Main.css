@@ -1,15 +1,8 @@
 
 
 main{
-    /* height: 100vh; */
-    /* height: 100%;
-    width: 100%; */
-
     grid-row: 2;
     display: grid;
     grid-template-columns: 13% minmax(auto, calc(100% - 26%)) 13%;
-    /* grid-template-rows: auto; */
-    
-
     min-height: calc(100vh - 120px);
 }
