@@ -1,7 +1,10 @@
 import "./LoginPage.css"
 import { useForm } from "react-hook-form"
 
-// ILoginForm
+import { useUserContext } from "../../context/userContext"
+import { useNavigate } from "react-router-dom"
+
+
 interface ILoginForm {
     email: string,
     password: string
@@ -10,12 +13,17 @@ interface ILoginForm {
 
 export function LoginPage() {
 
+    const { login } = useUserContext()
+
+    const navigate = useNavigate()
+
     const {register, handleSubmit, formState} = useForm <ILoginForm>({
         mode: "onSubmit"
     })
 
     function onSubmit(data: ILoginForm){
-        console.log(data)
+        login(data.email, data.password)
+        navigate("/")
     }
 
     return (

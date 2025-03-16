@@ -1,6 +1,10 @@
 import "./RegistrationPage.css"
 import { useForm } from "react-hook-form"
 
+import { useUserContext } from "../../context/userContext"
+import { useNavigate } from "react-router-dom"
+
+
 interface IRegistrationForm {
     username: string,
     email: string,
@@ -10,12 +14,17 @@ interface IRegistrationForm {
 
 export function RegistrationPage() {
 
+    const { register: userRegister } = useUserContext()
+
+    const navigate = useNavigate()
+
     const {register, handleSubmit, formState} = useForm <IRegistrationForm>({
         mode: "onSubmit"
     })
 
-    function submit(data: IRegistrationForm){
-        console.log(data)
+    async function submit(data: IRegistrationForm){
+        userRegister(data.username, data.email, data.password)
+        navigate("/")
     }
 
     return (

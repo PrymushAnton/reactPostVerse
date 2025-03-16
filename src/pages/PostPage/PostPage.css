@@ -37,7 +37,7 @@
 
 #PostPage {
     display: grid;
-    grid-template-rows: 5px auto auto auto 5px;
+    grid-template-rows: 5px auto auto auto auto 5px;
     min-height: calc(100vh - 120px);
     row-gap: 10px;
 }
@@ -98,4 +98,17 @@
     cursor: pointer;
     background-color:var(--darker-beige);
     transition: background-color ease-in-out 300ms;
+}
+
+.commentsDiv{
+    grid-row: 5;
+}
+
+.commentContainerTitle{
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.comment{
+    border: 1px solid black;
 }

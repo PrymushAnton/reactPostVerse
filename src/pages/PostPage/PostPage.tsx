@@ -1,17 +1,25 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import "./PostPage.css"
 import { usePostById } from "../../hooks/usePostById"
 import { useTitle } from "../../hooks/useTitle"
 import { RotatingLines } from "react-loader-spinner"
 import { useLikedPostsContext } from "../../context/likedPostsContext"
+import { useCommentsByPostId } from "../../hooks/useCommentsByPostId"
+import { useUserContext } from "../../context/userContext"
 
 
 export function PostPage(){
     const params = useParams()
     useTitle("Post page")
     const {likePost, checkStatus, unlikePost} = useLikedPostsContext()
+
+    const {isAuthenticated} = useUserContext()
     
     const {postById, isLoading, error} = usePostById(Number(params.id))
+
+    const {comments, isLoading: isLoadingComments, error: errorComments} = useCommentsByPostId(Number(params.id))
+
+    console.log(comments)
 
 
     return (
@@ -76,6 +84,23 @@ export function PostPage(){
                                     <p id="textOfPost">{postById?.text}</p>
                                 </div>
                                 
+                                <div className="commentsDiv">
+                                    <div className="commentContainerTitle">
+                                        <h2>Comments</h2>
+                                        {
+                                            isAuthenticated()
+                                            ? <p>You can write a comment</p>
+                                            : <p>In order to write a comment you need to be logged in. <Link to="/login">Login</Link></p>
+                                        }
+                                    </div>
+                                    {comments?.map((comment) => {
+                                        return <div className="comment">
+                                            <h3>{comment.title}</h3>
+                                            <h4>{comment.User.username}</h4>
+                                            <p>{comment.text}</p>
+                                        </div>
+                                    })}
+                                </div>
                                 
                             </div>
                         )

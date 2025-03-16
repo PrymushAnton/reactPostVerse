@@ -1,10 +1,14 @@
 import { LikedPostsContextProvider } from "./context/likedPostsContext";
+import { UserContextProvider } from "./context/userContext";
+
 import { AppRoutes } from "./Routes/Routes";
 
 export function App() {
 	return (
-		<LikedPostsContextProvider>
-			<AppRoutes/>
-		</LikedPostsContextProvider>
+		<UserContextProvider>
+			<LikedPostsContextProvider>
+				<AppRoutes/>
+			</LikedPostsContextProvider>
+		</UserContextProvider>
 	);
 }
